@@ -11,7 +11,6 @@
 		
 		public function SimpleShooter() {
 			
-			
 			planeList = new Array();
 			var staggerPosition:int = 50;
 			for (var i:int = 0; i < nPlanes; i++){
@@ -24,7 +23,7 @@
 				planeList.push(plane);
 			}
 			
-			// ainstantiating a launcher and adding to screen
+			// instantiating a launcher and adding to screen
 			launcher= new BulletLauncher();
 			addChild(launcher);
 			
@@ -36,7 +35,6 @@
 			//adds event listener for mouse click triggering bullet shot
 			//launcher.addEventListener(MouseEvent.MOUSE_DOWN, bullet.shootBullet());
 			launcher.addEventListener(MouseEvent.CLICK, shoot);
-			
 		}
 		
 		public function updateGame(event:Event){
@@ -45,10 +43,9 @@
 					planeList[i].x = planeList[i].mX;
 			}
 		}
-		public function shoot(event:Event){
-			for(var i:int = 0; i < 10; i++){
+		public function shoot(event:MouseEvent){
 			bullet.shootBullet();
-			}
+			bullet.y -= bullet.mY;
 		}
 	}
 }
