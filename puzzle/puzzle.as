@@ -1,6 +1,8 @@
 ﻿package {
 	import flash.display.*;
 	import flash.events.*;
+	import flash.ui.Mouse;
+	import flash.events.MouseEvent;
 
 	public class puzzle extends MovieClip {
 		//CREATE GLOBAL ARRAY TO HOLD PUZZLE pieces
@@ -22,9 +24,10 @@
 			initializeGame();
 			//TASK 2: REGISTER LISTENERS FOR DRAG AND DROP ofpieces
 			for (var i:int = 0; i < 9; i++) {
-				Pieces[i].addEventListener(MouseEvent.MOUSE_DOWN, puzzleStartDrag('mouse_down'));
-				Pieces[i].addEventListener(MouseEvent.MOUSE_UP, puzzleEndDrag());
+				Pieces[i].addEventListener(MouseEvent.MOUSE_DOWN, puzzleStartDrag);
+				Pieces[i].addEventListener(MouseEvent.MOUSE_UP, puzzleEndDrag);
 			}
+			
 		}	
 
 		public function initializeGame() {
@@ -39,13 +42,14 @@
 			p9.locX = 399; p9.locY = 429; Pieces.push(p9);
 		}
 
-		public function puzzleStartDrag(event:MouseEvent){
-			trace("working");
+		public function puzzleStartDrag(event:MouseEvent):void{
+			trace("WHY ISNT THIS WORKING!!!!");
 			var puzzleObj = (event.currentTarget);
 			puzzleObj.startDrag(true);
 		}
 
-		public function puzzleEndDrag(event:MouseEvent){
+		public function puzzleEndDrag(event:MouseEvent):void{
+			trace("wtf");
 			var puzzleObj = (event.currentTarget);
 			puzzleObj.stopDrag();
 		}
